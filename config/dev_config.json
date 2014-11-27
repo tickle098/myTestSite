@@ -1,0 +1,15 @@
+{
+    "getconfig": {
+        "silent": true //turns off all output
+    },
+
+    "App" : {
+        "port": 4000
+    },
+    "log": {
+    	"streams": [{
+    		"level": "info",
+    		"path": "logs/development.log"
+    		}]
+    }
+}

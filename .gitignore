@@ -1,0 +1,10 @@
+.project
+node_modules/
+.idea/
+npm-debug.log
+tmp/
+tmp/build/
+*.swp
+public/javascripts/
+public/stylesheets/
+public/images/

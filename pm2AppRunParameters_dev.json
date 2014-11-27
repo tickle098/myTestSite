@@ -1,0 +1,41 @@
+{
+    "apps" : [{
+        "name"              : "industryweek8000",
+        "cwd"               : "/var/www/industryweek",
+        "script"            : "app.js",
+        "run_as_user"       : "jenkins",
+        "run_as_group"      : "wheel",
+        "instances"         : "max",
+        "watch"             : "true",
+        "ignoreWatch"       : ["node_modules"],
+        "merge_logs"        : "true",
+        "exec_interpreter"  : "node",
+        "exec_mode"         : "cluster_mode",
+        "env": {
+            "NODE_ENV": "dev",
+            "GETCONFIG_ROOT": "/var/www/industryweek/config",
+            "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+        },
+        "env_production" : {
+            "NODE_ENV": "production"
+        }
+    }],
+    "deploy" : {
+        "production" : {
+            "user" : "node",
+            "host" : "212.83.163.1",
+            "ref"  : "origin/master",
+            "repo" : "git@github.com:repo.git",
+            "path" : "/var/www/production",
+            "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+        },
+        "dev" : {
+            "user" : "john.montoya",
+            "host" : "ksopdedgenodejs.pme.penton.com",
+            "ref"  : "origin/develop",
+            "repo" : "git@github.pme.penton.com:/PENTON/industryweek-node.git",
+            "path" : "/var/www/industryweek",
+            "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env dev"
+        }
+    }
+}

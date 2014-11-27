@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#
+## Pre-commit hooks
+
+# grunt task before committing
+#
+grunt pre-commit-task
+
+#  If grunt exits with an error code higher than 0, which it does if any task fail, it will prevent the commit

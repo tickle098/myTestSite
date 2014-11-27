@@ -1,0 +1,8 @@
+{
+    "getconfig": {
+        "silent": true //turns off all output
+    },
+    "App" : {
+        "port": 4000
+    }
+}
