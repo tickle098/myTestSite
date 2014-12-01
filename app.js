@@ -7,6 +7,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('getconfig');
 var util = require('util');
+//var hbs = require('hbs');
+//var handlebars = require('handlebars');
+
 console.log('config - ' + util.inspect(config, false, null));
 
 var routes = require('./routes/index');
@@ -14,9 +17,17 @@ var users = require('./routes/users');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// manually set render engine, under normal circumstances this
+// would not be needed as hbs would be installed through npm
+
+// hbs view engine setup
+app.set('views', path.join(__dirname, 'app/views'));
+app.set('view engine', 'hbs');
+
+// HANDLEBARS HELPERS AND PARTIALS
+//hbs.registerPartials(__dirname + '/views/partials');
+//hbs.handlebars == handlebars;
+//hbs.localAsTemplateData(app);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -27,6 +38,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(hbs());
+
+//app.get('/', routes.index);
 
 app.use('/', routes);
 app.use('/users', users);

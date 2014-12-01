@@ -1,0 +1,21 @@
+<h1>{{error.status}}</h1>
+<div>{{error.message}}</div>
+
+<pre>{{error.stack}}</pre>
+
+{{#if error.errors}}
+
+    <h4>Additional info</h4>
+
+    <div>
+        {{#ul error.errors}}
+            {{message}}
+        {{/ul}}
+    </div>
+
+{{/if}}
+
+
+
+
+
